@@ -226,6 +226,11 @@ def sub(x0, x1):
     return Sub()(x0, x1)
 
 
+def rsub(x0, x1):
+    x1 = as_array(x1)
+    return Sub()(x1, x0)  # x0와 x1의 순서를 바꾼다.
+
+
 def div(x0, x1):
     x1 = as_array(x1)
     return Div()(x0, x1)
@@ -247,6 +252,7 @@ def setup_variable():
     Variable.__rmul__ = mul
     Variable.__neg__ = neg
     Variable.__sub__ = sub
+    Variable.__rsub__ = rsub
     Variable.__truediv__ = div
     Variable.__rtruediv__ = rdiv
     Variable.__pow__ = pow
